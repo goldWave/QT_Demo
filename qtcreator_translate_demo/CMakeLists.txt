@@ -55,11 +55,16 @@ find_program(LUPDATE_EXECUTABLE lupdate)
 find_program(LRELEASE_EXECUTABLE lrelease)
 message("lupdate:" ${LUPDATE_EXECUTABLE})
 message("lrelease: "${LRELEASE_EXECUTABLE})
-foreach(_chinese_file ${TS_FILES})
-        execute_process(
-                COMMAND ${LUPDATE_EXECUTABLE} -recursive ${CMAKE_SOURCE_DIR} -ts ${_chinese_file}
-        )
-        execute_process(
-                COMMAND ${LRELEASE_EXECUTABLE} ${_chinese_file}
-        )
-endforeach()
+execute_process(
+    COMMAND ${LUPDATE_EXECUTABLE} -recursive ${CMAKE_SOURCE_DIR} -ts ${TS_FILES}
+)
+execute_process(
+    COMMAND ${LRELEASE_EXECUTABLE} ${TS_FILES}
+)
+
+add_custom_command(
+    TARGET qtTrans
+    POST_BUILD
+    COMMAND  "${CMAKE_COMMAND}" -E copy "${CMAKE_SOURCE_DIR}/qtTrans_zh_CN.qm" "${qtTrans_BINARY_DIR}/qtTrans_zh_CN.qm"
+)
+

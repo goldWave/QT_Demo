@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     auto testStr = tr("not good");
-    qDebug() << "not good > " << testStr;
+    qDebug() << "not good > " << testStr << QCoreApplication::applicationDirPath();
 }
 
 MainWindow::~MainWindow()

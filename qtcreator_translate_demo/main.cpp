@@ -3,25 +3,14 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
-#include <QDebug>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-//    QTranslator translator;
-//    const QStringList uiLanguages = QLocale::system().uiLanguages();
-//    for (const QString &locale : uiLanguages) {
-//        const QString baseName = "qtTrans_" + QLocale(locale).name();
-//        if (translator.load(":/i18n/" + baseName)) {
-//            a.installTranslator(&translator);
-//            break;
-//        }
-//    }
-
     QTranslator translator;
-    auto isSue =  translator.load("qtTrans_zh_CN.qm", R"(C:\Users\jimbo\Documents\qtTrans)");
-    qDebug() <<"isLoad succeed" << isSue;
+    // 工作目录为 可执行文件的 exe所在的 目录
+    auto isSue =  translator.load("qtTrans_zh_CN.qm", QCoreApplication::applicationDirPath());
     a.installTranslator(&translator);
 
     MainWindow w;
