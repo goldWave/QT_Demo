@@ -8,9 +8,9 @@
 ## 1. 使用Qt Creator进行编译调试，并集成翻译功能
 
 
-[项目](./qtcreator_translate_demo/)
+[qt creator 编译运行的翻译项目](./qtcreator_translate_demo/)
 
 ## 1. 使用visual studio进行编译调试，并集成翻译功能
 
-[项目](./visual_studio_translate_demo/)
+[visual studio 编译运行的翻译项目](./visual_studio_translate_demo/)
 
